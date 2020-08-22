@@ -1,0 +1,31 @@
+.triangle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.triangle.one {
+  background: linear-gradient(45deg, rgb(25 238 249 / 0.9) 50%, transparent 50%);
+}
+.triangle.two {
+  background: linear-gradient(-45deg, rgb(245 82 245 / .66) 50%, transparent 50%);
+}
+.triangle.three {
+  background: linear-gradient(225deg, rgb(242 253 68 / .9) 50%, transparent 50%);
+}
+
+.triangle.one.touched {
+  transform: rotate3d(1, 1, 1, 120deg);
+  /* transform: rotate3d(90deg); */
+  transition: transform ease 1s;
+}
+.triangle.touched {
+  /* transform: rotate3d(1, 1, 1, 120deg); */
+  transform: rotate(90deg) translate(100%, 100%);
+  transition: transform ease 1s;
+}
+
+body {
+  overflow: hidden;
+}
