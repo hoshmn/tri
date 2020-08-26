@@ -29,3 +29,10 @@
 body {
   overflow: hidden;
 }
+
+.frame {
+  overflow: hidden;
+}
+video, img {
+  height: 100%;
+}
