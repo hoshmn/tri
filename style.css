@@ -1,12 +1,38 @@
-html, body {
-  /* height: 100%; */
+/* 
+  TODO
+  - repo readme
+ */
+
+/* 
+  _tree colors_
+  #95525c
+  #5d262c
+
+  #af99b2
+  #746d8c
+
+  _pants colors_
+  #3164a1
+  #5878a1
+  #639dd7
+  #956552
+
+  #ab8c77 
+*/
+
+* {
+  font-family: 'Courier New', Courier, monospace;
 }
+
 body {
+  /* height: 100%; */
+  padding-top: 5vh;
+  padding-bottom: 5vh;
   background: linear-gradient(#9cc1e25c, #ab9bbb5c);
 }
 
-.triangle {
-  position: absolute;
+.triangle, .curtain, .tri-fly {
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -24,27 +50,95 @@ body {
 
 .triangle.one.touched {
   transform: rotate3d(1, 1, 1, 120deg);
-  /* transform: rotate3d(90deg); */
-  transition: transform ease 1s;
 }
 .triangle.touched {
-  /* transform: rotate3d(1, 1, 1, 120deg); */
-  transform: rotate(90deg) translate(100%, 100%);
   transition: transform ease 1s;
+  transform: rotate(90deg) translate(100%, 100%);
+}
+
+.curtain {
+  /* background: white; */
+  transition: transform ease 3s;
+  background: linear-gradient(#ab9bbb5c, #9cc1e25c);
+
+}
+.curtain.touched {
+  transform: rotate(900deg) translate(100%, 100%);
+}
+#lud {
+  position: absolute;
+  top: 37%;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 50px;  
+}
+.curtain p {
+  position: absolute;
+  font-size: 18px;
+  text-align: center;
+}
+.happy {
+  bottom: 2vh;
+  left: calc(50% - 162px);
+}
+.click-around {
+  transform: rotate(-90deg);
+  top: 40%;
+}
+.touch-things {
+  right: -125px;
+  transform: rotate(90deg);
+  top: 40%;
+}
+
+.tri-fly.tf-1 {
+  background: linear-gradient(45deg,#95525ccc 30%, transparent 50%);
+}
+.tri-fly.tf-2 {
+  background: linear-gradient(-45deg,#5d262ccc 30%, transparent 50%);
+}
+.tri-fly.tf-3 {
+  background: linear-gradient(225deg,#af99b2cc 30%, transparent 50%);
+}
+.tri-fly.tf-4 {
+  background: linear-gradient(-225deg,#746d8ccc 30%, transparent 50%);
+}
+.tri-fly.tf-5 {
+  background: linear-gradient(45deg,#3164a1cc 30%, transparent 50%);
+}
+.tri-fly.tf-6 {
+  background: linear-gradient(-45deg,#5878a1cc 30%, transparent 50%);
+}
+.tri-fly.tf-7 {
+  background: linear-gradient(225deg,#639dd7cc 30%, transparent 50%);
+}
+.tri-fly.tf-8 {
+  background: linear-gradient(-225deg,#956552cc 30%, transparent 50%);
+}
+
+.tri-fly.touched {
+  transition: transform ease 1s;
+  transform: rotate(900deg) translate(100%, 100%);
 }
 
 .frame {
   overflow: hidden;
   margin: auto;
   padding: 10%;
-  /* transition: all ease .4s; */
   /* box-shadow: 0px 3px 15px rgba(0,0,0,0.2); */
 }
-/* .frame:hover {
-  width: 100% !important;
-  height: 100% !important;
-} */
-video, img {
+img {
+  transition: transform ease .5s;
   /* height: 100%; */
   width: 100%;
+}
+img:hover {
+  transform: scale(1.02);
+}
+
+.contribute {
+  bottom: 2vh;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
 }

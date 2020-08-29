@@ -82,8 +82,14 @@ $('.frame').click(function() {
   showNextSource(frame)
 })
 
-const tris = $('.triangle')
+$('.triangle').click(function() {
+  $(this).addClass('touched')
+})
 
-tris.hover(function() {
+$('.curtain').click(function() {
+  $(this).addClass('touched')
+})
+
+$('.tri-fly').hover(function() {
   $(this).addClass('touched')
 })
