@@ -27,7 +27,56 @@ const tree = {
   maxWidth: DEFAULT_PORTRAIT_WIDTH
 }
 
-const frames = [ pants, tree ]
+const grass = {
+  id: 'grass',
+  sources: [
+    { src: 'grass.gif' },
+    { src: 'grass.jpg' },
+  ],
+  maxWidth: DEFAULT_LANDSCAPE_WIDTH
+}
+
+const cigs = {
+  id: 'cigs',
+  sources: [
+    { src: 'cigs.gif' },
+    { src: 'cigs_1.jpg' },
+    { src: 'cigs1b.jpg' },
+    { src: 'cigs1c.jpg' },
+    { src: 'cigs1d.jpg' },
+    { src: 'cigs1e.jpg' },
+    { src: 'cigs1b.jpg' },
+    { src: 'cigs1c.jpg' },
+    { src: 'cigs1d.jpg' },
+    { src: 'cigs1e.jpg' },
+    { src: 'cigs_2.jpg' },
+  ],
+  maxWidth: DEFAULT_PORTRAIT_WIDTH
+}
+
+const snowy = {
+  id: 'snowy',
+  sources: [
+    { src: 'snowy.gif' },
+    { src: 'snowy_b&w.jpg' },
+    { src: 'snowy_w&b.jpg' },
+  ],
+  maxWidth: DEFAULT_LANDSCAPE_WIDTH
+}
+
+const totem = {
+  id: 'totem',
+  sources: [
+    { src: 'totem.gif'},
+    { src: 'totem_1.jpg' },
+    { src: 'totem_2.jpg' },
+    { src: 'totem_3.jpg' },
+    { src: 'totem_4.jpg' },
+  ],
+  maxWidth: DEFAULT_PORTRAIT_WIDTH
+}
+
+const frames = [ pants, tree, grass, cigs, snowy, totem ]
 
 
 // __INTERNAL LOGIC_____
@@ -39,7 +88,7 @@ const showNextSource = (frame) => {
   const { src, video } = getNextSource(frame)
   
   const $frame = $(`#${id}.frame`)
-  $frame.find('img').attr('src', src)
+  $frame.find('img').attr('src', `photos/${src}`)
 }
 
 const getNextSource = frame => {
@@ -62,7 +111,7 @@ const initialize = () => {
     const { src } = getNextSource(frame)
     const frameDiv = `
       <div data-id="${id}" id="${id}" class="frame" style="max-width: ${maxWidth}px;">
-        <img src="${src}" alt="${id}">
+        <img src="photos/${src}" alt="${id}">
       </div>
     `
 
@@ -88,8 +137,9 @@ $('.triangle').click(function() {
 
 $('.curtain').click(function() {
   $(this).addClass('touched')
+  // $('.tri-fly').addClass('touched')
 })
 
-$('.tri-fly').hover(function() {
-  $(this).addClass('touched')
-})
+// $('.tri-fly').hover(function() {
+//   $(this).addClass('touched')
+// })
