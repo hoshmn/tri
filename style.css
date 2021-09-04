@@ -148,6 +148,35 @@ body {
   transform: rotate(-900deg) translate(100%, 100%);
 }
 
+.dhead {
+  width: 30vw;
+  position: relative;
+  left: 10vw;
+  top: 35vh;
+  -webkit-animation: spinw 3s infinite cubic-bezier(.69,-1.17,.45,1.88);
+  animation: spin 3s infinite cubic-bezier(.69,-1.17,.45,1.88);
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+.jhead {
+  width: 30vw;
+  position: relative;
+  left: 65vw;
+  top: 35vh;
+  -webkit-animation: spinw 3s infinite cubic-bezier(.68,-0.55,.27,1.55);
+  animation: spin 3s infinite cubic-bezier(.68,-0.55,.27,1.55);
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+}
+@-webkit-keyframes spinw {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}   
+}
+@keyframes spin {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}   
+}
+
 .corner {
   width: 100px;
   height: 100px;
