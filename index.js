@@ -5,15 +5,26 @@ const DEFAULT_PORTRAIT_WIDTH = 675
 // __CONTENT_____
 
 // to add a new "frame", simply define a frame obj like the following and add it to the frames array:
+const cameo = {
+  id: 'cameo',
+  video: true,
+  sources: [
+    // as many as you'd like! just make sure to upload an image/video/gif file with a matching name
+    { src: 'v1lochte.mp4' },
+    { src: 'v1bday.mov' },
+  ],
+  maxWidth: 480,
+}
+
 const pants = {
   id: 'pants',
-  sources: [ // as many as you'd like! just make sure to upload an image/gif file with a matching name
+  sources: [
     // { src: 'pants_0.jpg' },
     { src: 'pants.gif' },
     { src: 'pants_1.png' },
     { src: 'pants_2.png' },
   ],
-  maxWidth: DEFAULT_LANDSCAPE_WIDTH
+  maxWidth: DEFAULT_LANDSCAPE_WIDTH,
 }
 
 const tree = {
@@ -76,7 +87,7 @@ const totem = {
   maxWidth: DEFAULT_PORTRAIT_WIDTH
 }
 
-const frames = [ pants, tree, grass, cigs, snowy, totem ]
+const frames = [cameo, pants, tree, grass, cigs, snowy, totem]
 
 
 // __INTERNAL LOGIC_____
@@ -84,11 +95,12 @@ const frames = [ pants, tree, grass, cigs, snowy, totem ]
 const frameMap = {} // populates dynamically, keep as empty obj
 
 const showNextSource = (frame) => {
-  const { id } = frame
-  const { src, video } = getNextSource(frame)
+  const { id, video } = frame
+  const { src } = getNextSource(frame)
   
   const $frame = $(`#${id}.frame`)
-  $frame.find('img').attr('src', `photos/${src}`)
+  const elm = video ? 'video' : 'img'
+  $frame.find(elm).attr('src', `photos/${src}`)
 }
 
 const getNextSource = frame => {
@@ -103,15 +115,19 @@ const getNextSource = frame => {
   return sources[frame.activeIdx]
 }
 
+const getNextButton = (id) =>
+  `<span data-id="${id}" class="next-button">></span>`
 const initialize = () => {
   frames.forEach((frame) => {
-    const { id, maxWidth } = frame
+    const { id, maxWidth, video } = frame
     frameMap[id] = frame // populate map, to retrieve proper frame on click
 
     const { src } = getNextSource(frame)
+    const elm = video ? 'video autoplay controls' : 'img'
     const frameDiv = `
       <div data-id="${id}" id="${id}" class="frame" style="max-width: ${maxWidth}px;">
-        <img src="photos/${src}" alt="${id}">
+        <${elm} src="photos/${src}" alt="${id}">${video ? '</video>' : ''}
+        ${video ? getNextButton(id) : ''}
       </div>
     `
 
@@ -125,7 +141,7 @@ const initialize = () => {
 
 initialize()
 
-$('.frame').click(function() {
+$('.frame').click(function () {
   const { id } = this.dataset
   const frame = frameMap[id]
   showNextSource(frame)
