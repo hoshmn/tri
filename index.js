@@ -6,12 +6,13 @@ const DEFAULT_PORTRAIT_WIDTH = 675
 
 // to add a new "frame", simply define a frame obj like the following and add it to the frames array:
 const cameo = {
-  id: 'cameo',
+  id: "cameo",
   video: true,
   sources: [
     // as many as you'd like! just make sure to upload an image/video/gif file with a matching name
-    { src: 'v1lochte.mp4' },
-    { src: 'v1bday.mov' },
+    { src: "v1lochte.mp4" },
+    { src: "v1bday.mov" },
+    { src: "v1spark.mp4" },
   ],
   maxWidth: 480,
 }
