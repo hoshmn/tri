@@ -88,8 +88,14 @@ const totem = {
   maxWidth: DEFAULT_PORTRAIT_WIDTH
 }
 
-const frames = [cameo, pants, tree, grass, cigs, snowy, totem]
+const stooch = {
+  id: "stooch",
+  video: true,
+  sources: [{ src: "stooooooch.mp4" }],
+  maxWidth: DEFAULT_PORTRAIT_WIDTH,
+}
 
+const frames = [stooch, cameo, pants, tree, grass, cigs, snowy, totem]
 
 // __INTERNAL LOGIC_____
 
@@ -98,13 +104,13 @@ const frameMap = {} // populates dynamically, keep as empty obj
 const showNextSource = (frame) => {
   const { id, video } = frame
   const { src } = getNextSource(frame)
-  
+
   const $frame = $(`#${id}.frame`)
-  const elm = video ? 'video' : 'img'
-  $frame.find(elm).attr('src', `photos/${src}`)
+  const elm = video ? "video" : "img"
+  $frame.find(elm).attr("src", `photos/${src}`)
 }
 
-const getNextSource = frame => {
+const getNextSource = (frame) => {
   const { activeIdx, sources } = frame
 
   if (!Number.isInteger(activeIdx)) {
@@ -124,15 +130,15 @@ const initialize = () => {
     frameMap[id] = frame // populate map, to retrieve proper frame on click
 
     const { src } = getNextSource(frame)
-    const elm = video ? 'video autoplay controls' : 'img'
+    const elm = video ? "video autoplay controls" : "img"
     const frameDiv = `
       <div data-id="${id}" id="${id}" class="frame" style="max-width: ${maxWidth}px;">
-        <${elm} src="photos/${src}" alt="${id}">${video ? '</video>' : ''}
-        ${video ? getNextButton(id) : ''}
+        <${elm} src="photos/${src}" alt="${id}">${video ? "</video>" : ""}
+        ${video && frame.sources?.length > 1 ? getNextButton(id) : ""}
       </div>
     `
 
-    $('.frames').append(frameDiv)
+    $(".frames").append(frameDiv)
 
     // const $frame = $(`#${id}.frame`)
     // $frame.css(frameSize)
